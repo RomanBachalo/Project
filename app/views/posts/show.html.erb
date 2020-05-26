@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <%= stylesheet_link_tag "agency.css" %>
+    <%= stylesheet_link_tag "styles.css" %>
+</head>
+
+<body style="margin: 10px">
+<div class="nav-bar">
+        <%= image_tag("logos/logo.png", :alt => "Ruby Blog", :class => "logo") %>
+        <div class="menu-buttons">
+            <a href="/posts#Home">Home</a>
+        </div>
+
+        <div class="menu-buttons">
+            <a href="/posts#Posts">Posts</a>
+        </div>
+
+        <div class="menu-buttons">
+            <a href="/posts/new">Create new Post </a>
+        </div>
+
+        <div class="menu-buttons">
+            <% if user_signed_in? %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            <% else %>
+            <%= link_to "Log In", new_user_session_path %>
+            <% end %>
+        </div>
+
+        <div class="user">
+            <% if user_signed_in? %>
+            <p style="font-size: 16px"><%= current_user.email %>, <%= Post.where(user_id: current_user.id).count %> posts</p>
+            <% end %>
+        </div>
+    </div>
+    <p id="notice"><%= notice %></p>
+
+    <h1 class="header"><%= @post.tittle %></h1>
+
+    <p class="post-body"><%= @post.body %></p>
+    <p class="post-author" style="vertical-align: bottom; margin: 0;"> Author: <%= @post.user.email %></p>
+
+    <% if @post.user == current_user %>
+        | <%= link_to 'Edit', edit_post_path(@post), :style => 'font-size: 18px;' %> | 
+        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, :style => 'font-size: 18px;' %> |
+    <% end %>
+
+    <%= link_to 'Back', posts_path, :style => 'font-size: 18px;' %>
+
+    <p><%= @post.comments.length %> Comment(s)</p>
+
+    <%= render 'comments/new' %>
+    <hr>
+    <% @post.comments.all.each do |c|%>
+    <p class="comm-body"> <%= c.body %> </p>
+    <p class="comm-time"> <%= c.created_at %> </p>
+    <hr>
+    <% end %>
+</body>
+
+</html>

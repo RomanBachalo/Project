@@ -1,0 +1,19 @@
+<html>
+
+<head>
+    <%= stylesheet_link_tag "agency.css" %>
+    <%= stylesheet_link_tag "styles.css" %>
+
+</head>
+
+<body style="margin: 10px">
+
+    <h1 class="header">New Post</h1>
+
+    <%= render 'form', post: @post %>
+    <br>
+    <%= link_to 'Back', posts_path, :style => 'font-size: 18px;' %>
+    <title>New Post</title>
+</body>
+
+</html>
