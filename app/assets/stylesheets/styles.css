@@ -41,6 +41,8 @@ body {
     font-size: 48px;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 20px;
+    line-height: normal;
 }
 
 .wrap {
@@ -64,6 +66,14 @@ body {
 }
 
 .post-author {
+    margin: 0px;
+    font-size: 16px;
+    color: gray;
+    text-align: right;
+}
+
+.post-time {
+    margin: 0px;
     font-size: 16px;
     color: gray;
     text-align: right;
@@ -72,6 +82,12 @@ body {
 .comm-body {
     font-size: 18px;
     text-align: justify;
+}
+
+.comm-author {
+    font-size: 16px;
+    color: gray;
+    text-align: right;
 }
 
 .comm-time {

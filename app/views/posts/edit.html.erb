@@ -6,6 +6,34 @@
 </head>
 
 <body style="margin: 10px">
+    <div class="nav-bar">
+        <%= image_tag("logos/logo.png", :alt => "Ruby Blog", :class => "logo") %>
+        <div class="menu-buttons">
+            <a href="/posts#Home">Home</a>
+        </div>
+
+        <div class="menu-buttons">
+            <a href="/posts#Posts">Posts</a>
+        </div>
+
+        <div class="menu-buttons">
+            <a href="/posts/new">Create new Post </a>
+        </div>
+
+        <div class="menu-buttons">
+            <% if user_signed_in? %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            <% else %>
+            <%= link_to "Log In", new_user_session_path %>
+            <% end %>
+        </div>
+
+        <div class="user">
+            <% if user_signed_in? %>
+            <p style="font-size: 16px"><%= current_user.email %>, <%= Post.where(user_id: current_user.id).count %> posts</p>
+            <% end %>
+        </div>
+    </div>
     <h1 class="header">Editing Post</h1>
 
     <%= render 'form', post: @post %>

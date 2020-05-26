@@ -3,17 +3,18 @@
 <head>
     <%= stylesheet_link_tag "agency.css" %>
     <%= stylesheet_link_tag "styles.css" %>
+    <title>Ruby Blog</title>
 </head>
 
 <body>
     <div class="nav-bar">
         <%= image_tag("logos/logo.png", :alt => "Ruby Blog", :class => "logo") %>
         <div class="menu-buttons">
-            <a href="posts#Home">Home</a>
+            <a href="/posts#Home">Home</a>
         </div>
 
         <div class="menu-buttons">
-            <a href="posts#Posts">Posts</a>
+            <a href="/posts#Posts">Posts</a>
         </div>
 
         <div class="menu-buttons">
@@ -41,14 +42,15 @@
     <div id="Posts"></div>
     <div style="margin-left: 10px; margin-right: 10px;">
         <p class="header" >Posts</p>
-        <p>Read another users' posts or just <a href="/posts/new"> create new post here </a></p>
+        <p class="post-body">Read another users' posts or just <a href="/posts/new"> create new post here </a></p>
 
         <% @posts.each do |post| %>
 
         <p class="post-title" style="vertical-align: bottom; margin: 0;"><%= post.tittle %></p>
         <p class="post-body"><%= post.body[0..400] %> ... </p>
         <p class="post-author" style="vertical-align: bottom; margin: 0;"> Author: <%= post.user.email %></p>
-        
+        <p class="post-time"><%= time_ago_in_words(post.created_at) %> ago</p>
+
         <%= link_to 'Show', post %>
         <% if post.user == current_user %>
         | <%= link_to 'Edit', edit_post_path(post) %> | 
@@ -57,14 +59,6 @@
         <hr>
         <% end %>
 
-        <br>
-
-        <%= link_to 'New Post', new_post_path %>
-
-    </div>
-
-    <div>
-        Info
     </div>
 </body>
 

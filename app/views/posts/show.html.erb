@@ -39,7 +39,8 @@
     <h1 class="header"><%= @post.tittle %></h1>
 
     <p class="post-body"><%= @post.body %></p>
-    <p class="post-author" style="vertical-align: bottom; margin: 0;"> Author: <%= @post.user.email %></p>
+    <p class="post-author" style="vertical-align: bottom; margin: 0;"> Author: <%= @post.user.email %> </p>
+    <p class="post-time"><%= time_ago_in_words(@post.created_at) %> ago</p>
 
     <% if @post.user == current_user %>
         | <%= link_to 'Edit', edit_post_path(@post), :style => 'font-size: 18px;' %> | 
@@ -54,7 +55,8 @@
     <hr>
     <% @post.comments.all.each do |c|%>
     <p class="comm-body"> <%= c.body %> </p>
-    <p class="comm-time"> <%= c.created_at %> </p>
+    <p class="comm-author"> <%= User.find(c.user_id).email%>,
+    <%= time_ago_in_words(c.created_at) %> ago</p>
     <hr>
     <% end %>
 </body>
