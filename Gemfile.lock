@@ -57,12 +57,15 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.9.0)
-    execjs (2.7.0)
+    execjs (2.8.0)
+    ffi (1.12.2)
     ffi (1.12.2-x64-mingw32)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    libv8 (3.16.14.19)
+    libv8 (3.16.14.19-x86_64-linux)
     loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -73,6 +76,8 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     nio4r (2.5.2)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.9-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
@@ -106,6 +111,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    ref (2.0.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -128,6 +134,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -148,6 +157,7 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   coffee-rails (~> 4.2)
